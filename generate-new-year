@@ -1,12 +1,17 @@
 #!/bin/sh
 set -eu
 
+# Move to the repo that this script resides in
+cd "$(dirname "$0")"
+pwd
+
+# Generate and extract metadata needed
 year="$(date +"%Y")"
 uuid="$(julia -e "using UUIDs; print(UUIDs.uuid4())")"
-
 name="$(git config user.name)"
 email="$(git config user.email)"
 
+# Use metadata to generate customized project files
 sed -e "s/<year>/$year/g" \
     -e "s/<uuid>/$uuid/g" \
     -e "s/<name>/$name/g" \
