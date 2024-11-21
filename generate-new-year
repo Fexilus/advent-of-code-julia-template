@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+year="$(date +"%Y")"
+uuid="$(julia -e "using UUIDs; print(UUIDs.uuid4())")"
+
+name="$(git config user.name)"
+email="$(git config user.email)"
+
+sed -e "s/<year>/$year/g" \
+    -e "s/<uuid>/$uuid/g" \
+    -e "s/<name>/$name/g" \
+    -e "s/<email>/$email/g" \
+    Project.toml > Project.toml.tmp
+
+mv Project.toml.tmp Project.toml
+
+sed -e "s/<year>/$year/g" \
+    "src/AdventOfCode<year>.jl" > "src/AdventOfCode$year.jl"
+
+git rm "src/AdventOfCode<year>.jl"
