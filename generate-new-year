@@ -24,18 +24,14 @@ sed -e "s/<year>/$year/g" \
     -e "s/<email>/$email/g" \
     Project.toml.template > Project.toml
 
-if [ -z "$soft_run" ]; then
-    git rm Project.toml.template
-fi
-
 sed -e "s/<year>/$year/g" \
     "src/AdventOfCode<year>.jl" > "src/AdventOfCode$year.jl"
 
-if [ -z "$soft_run" ]; then
-    git rm "src/AdventOfCode<year>.jl"
-fi
 
-# Remove the script itself
+# Remove template files and generation scripts
 if [ -z "$soft_run" ]; then
-    git rm generate-new-year --cached
+    git rm Project.toml.template
+    git rm "src/AdventOfCode<year>.jl"
+    git rm generate-day-files
+    git rm generate-new-year
 fi
