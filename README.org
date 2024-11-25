@@ -27,7 +27,7 @@ to start working on the solution for day ~XX~ (where ~<year>~ matches that of yo
 
 The solutions for the day go in the functions ~star1~ and ~star2~ in the day's file (~src/DayXX.jl~).
 These functions take an I/O stream as input, and by default read the standard input (you end any input you put in with ~Ctrl-d~).
-If you want to input a string your warp it in an [[https://docs.julialang.org/en/v1/base/io-network/#Base.IOBuffer][~IOBuffer~]], and if you want to input the contents of a file your warp the name of the file with [[https://docs.julialang.org/en/v1/base/io-network/#Base.open][~open~]].
+If you want to input a string your warp it in an [[https://docs.julialang.org/en/v1/base/io-network/#Base.IOBuffer][IOBuffer]], and if you want to input the contents of a file your warp the name of the file with [[https://docs.julialang.org/en/v1/base/io-network/#Base.open][open]].
 
 Most Advent of Code problems provide one or more hints.
 Testing if your solution solves those hints can be automated by adding them to ~test_hints_star1~ and ~test_hints_star2~.
