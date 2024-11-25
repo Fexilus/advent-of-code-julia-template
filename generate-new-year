@@ -10,7 +10,6 @@ done
 
 # Move to the repo that this script resides in
 cd "$(dirname "$0")"
-pwd
 
 # Generate and extract metadata needed
 year="$(date +"%Y")"
