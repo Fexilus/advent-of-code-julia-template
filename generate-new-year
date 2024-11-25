@@ -1,6 +1,13 @@
 #!/bin/sh
 set -eu
 
+soft_run=
+while getopts "s" opt; do
+    case "$opt" in
+        s)  soft_run=1
+    esac
+done
+
 # Move to the repo that this script resides in
 cd "$(dirname "$0")"
 pwd
@@ -16,11 +23,15 @@ sed -e "s/<year>/$year/g" \
     -e "s/<uuid>/$uuid/g" \
     -e "s/<name>/$name/g" \
     -e "s/<email>/$email/g" \
-    Project.toml > Project.toml.tmp
+    Project.toml.template > Project.toml
 
-mv Project.toml.tmp Project.toml
+if [ -z "$soft_run" ]; then
+    git rm Project.toml.template
+fi
 
 sed -e "s/<year>/$year/g" \
     "src/AdventOfCode<year>.jl" > "src/AdventOfCode$year.jl"
 
-git rm "src/AdventOfCode<year>.jl"
+if [ -z "$soft_run" ]; then
+    git rm "src/AdventOfCode<year>.jl"
+fi
