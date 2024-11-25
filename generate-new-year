@@ -35,3 +35,8 @@ sed -e "s/<year>/$year/g" \
 if [ -z "$soft_run" ]; then
     git rm "src/AdventOfCode<year>.jl"
 fi
+
+# Remove the script itself
+if [ -z "$soft_run" ]; then
+    git rm generate-new-year --cached
+fi
