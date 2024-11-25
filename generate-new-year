@@ -30,6 +30,7 @@ sed -e "s/<year>/$year/g" \
 
 # Remove template files and generation scripts
 if [ -z "$soft_run" ]; then
+    git rm README.org
     git rm Project.toml.template
     git rm "src/AdventOfCode<year>.jl"
     git rm generate-day-files
