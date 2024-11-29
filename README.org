@@ -19,13 +19,13 @@ The intended workflow is to work in a text editor and the Julia REPL.
 The solutions for day ~XX~ go in the functions ~star1~ and ~star2~ in the day's file (~src/DayXX.jl~).
 These functions are meant to take an I/O stream as input, and by default read the standard input (you end any input you put in with ~Ctrl-d~).
 If you want to input the contents of a file, just pass the file name as an argument.
-If you want to input a string your wrap it in an [[https://docs.julialang.org/en/v1/base/io-network/#Base.IOBuffer][IOBuffer]].
+If you want to input a string, wrap it in an [[https://docs.julialang.org/en/v1/base/io-network/#Base.IOBuffer][IOBuffer]].
 
-To run the solutions
+To run the solutions, start the REPL with the project environment by executing
 #+begin_src sh
   julia --project
 #+end_src
-and then
+and then run
 #+begin_src julia
   using AdventOfCode<year>.DayXX
 #+end_src
@@ -45,10 +45,10 @@ Testing if your solution solves those hints can be automated by adding them to ~
 These functions are exported when you run ~using DayXX~, and are meant to be run directly from the REPL.
 
 *** Testing all solutions
-To see your progression across all the years' stars, the hint-tests can be tested together using [[https://docs.julialang.org/en/v1/stdlib/Test/#Workflow-for-Testing-Packages][Julia's built in testing framework]].
-Additionally, the final answers to stars can be tested in this framework by writing the answer to ~data/dayXX.ansY~, where ~Y~ is the star.
+To see your progression across all the year's stars, the hint-tests can be tested together using [[https://docs.julialang.org/en/v1/stdlib/Test/#Workflow-for-Testing-Packages][Julia's built in testing framework]].
+Additionally, the final answers to stars can added to these tests by writing the answer to ~data/dayXX.ansY~, where ~Y~ is the star.
 
-To run these test, run
+To run the full test suite, run
 #+begin_src
   pkg> test
 #+end_src
