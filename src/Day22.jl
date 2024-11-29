@@ -2,10 +2,15 @@ module Day22
 
 using Test
 
+using ..Utils: DATA_DIR
+
+export input_file
 export star1
 export test_hints_star1
 export star2
 export test_hints_star2
+
+input_file = joinpath(DATA_DIR, "day22.input")
 
 function star1(input=stdin)
 end

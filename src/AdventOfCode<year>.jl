@@ -26,6 +26,13 @@ export Day23
 export Day24
 export Day25
 
+module Utils
+    export DATA_DIR
+
+    const BASE_DIR = dirname(dirname(@__FILE__))
+    const DATA_DIR = joinpath(BASE_DIR, "data")
+end
+
 include("Day01.jl")
 include("Day02.jl")
 include("Day03.jl")
